@@ -1,4 +1,3 @@
-
 use rand::Rng;
 
 #[derive(Debug, Clone)]
@@ -62,8 +61,7 @@ impl PointVal {
 
     fn to_u64(&self, len: i64) -> u64 {
         let i = self.integral.parse::<u64>().unwrap();
-        let num = (0..len)
-            .fold(1, |acc, _| acc * 10);
+        let num = (0..len).fold(1, |acc, _| acc * 10);
         i * num + self.fractional.parse::<u64>().unwrap()
     }
 }
@@ -98,7 +96,9 @@ impl Coordinate {
         //排序小到大
         vec.sort_by(|a, b| a.0.to_u64(length as i64).cmp(&b.0.to_u64(length as i64)));
         // 取出来m个数据
-        vec.iter().map(|(_, point)|point.clone()).take(m).collect::<Vec<Point>>()
+        vec.iter()
+            .map(|(_, point)| point.clone())
+            .take(m)
+            .collect::<Vec<Point>>()
     }
 }
-
