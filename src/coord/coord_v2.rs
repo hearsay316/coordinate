@@ -43,7 +43,7 @@ impl Coordinate {
         }
         //排序小到大
         vec.sort_by(|a, b| a.0.partial_cmp(&b.0).unwrap_or(std::cmp::Ordering::Equal));
-        println!("{:?}", vec);
+        // println!("{:?}", vec);
         // 取出来m个数据
         vec.iter()
             .map(|(_, point)| point.clone())
