@@ -165,3 +165,69 @@ impl Coordinate {
             .collect::<Vec<Point>>()
     }
 }
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_point_new() {
+        let point = Point::new(1.0, 2.0);
+        assert_eq!(point.x.to_f64(), 1.0);
+        assert_eq!(point.y.to_f64(), 2.0);
+    }
+
+    #[test]
+    fn test_point_distance() {
+        let point1 = Point::new(1.0, 2.0);
+        let point2 = Point::new(4.0, 6.0);
+        assert_eq!(point1.distance(&point2).to_f64(), 5.0);
+    }
+
+    #[test]
+    fn test_point_val_new() {
+        let point_val = PointVal::new(1, 2);
+        assert_eq!(point_val.integral, "1");
+        assert_eq!(point_val.fractional, "2");
+    }
+
+    #[test]
+    fn test_point_val_from_string() {
+        let point_val = PointVal::from_string("1".to_string(), "2".to_string());
+        assert_eq!(point_val.integral, "1");
+        assert_eq!(point_val.fractional, "2");
+    }
+
+    #[test]
+    fn test_point_val_from_f64() {
+        let point_val = PointVal::from_f64(1.2);
+        assert_eq!(point_val.integral, "1");
+        assert_eq!(point_val.fractional, "2");
+    }
+
+    #[test]
+    fn test_point_val_to_f64() {
+        let point_val = PointVal::new(1, 2);
+        assert_eq!(point_val.to_f64(), 1.2);
+    }
+
+    #[test]
+    fn test_point_val_to_u64() {
+        let point_val = PointVal::new(1, 2);
+        assert_eq!(point_val.to_u64(2), 102);
+    }
+
+    #[test]
+    fn test_coordinate_new() {
+        let coordinate = Coordinate::new(10);
+        assert_eq!(coordinate.coord.len(), 10);
+    }
+
+    #[test]
+    fn test_coordinate_find_closest() {
+        let coordinate = Coordinate::new(10);
+        let target = Point::new(1.0, 2.0);
+        let closest_points = coordinate.find_closest(&target, 3);
+        assert_eq!(closest_points.len(), 3);
+    }
+}
+
