@@ -6,26 +6,19 @@ use axum::{
 use std::sync::{Arc, Mutex};
 
 struct AppState {
-    counter: Mutex<usize>,
+    counter: usize,
 }
 
-impl Clone for AppState {
-    fn clone(&self) -> Self {
-        Self {
-            counter: Mutex::new(*self.counter.lock().unwrap()),
-        }
-    }
-}
 
-async fn handler(State(state): State<Arc<AppState>>) -> String {
-    let mut counter = state.counter.lock().unwrap();
-    *counter += 1;
-    format!("Current counter: {}", *counter)
+async fn handler(State(state): State<Arc<Mutex<AppState>>>) -> String {
+    let mut counter = state.lock().unwrap();
+    counter.counter += 1;
+    format!("Current counter: {}", counter.counter)
 }
 
 #[tokio::main]
 async fn main() {
-    let shared_state = Arc::new(AppState { counter: Mutex::new(0) });
+    let shared_state = Arc::new(Mutex::new(AppState { counter: 0}) );
 
     let app = Router::new()
         .route("/", get(handler))
