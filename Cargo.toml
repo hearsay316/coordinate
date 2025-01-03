@@ -10,6 +10,6 @@ path = "examples/state_example.rs"
 [dependencies]
 rand = "0.8.5"
 rstar = "0.12.2"
-axum = "0.8"
+axum = {version = "0.8.0",features = ["multipart"]}
 tokio = { version = "1.0", features = ["full"] }
-hyper = { version = "1.0", features = ["full"] }
+tower-http = { version = "0.6.1", features = ["cors"] }
