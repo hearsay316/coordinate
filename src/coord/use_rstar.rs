@@ -11,7 +11,6 @@ pub struct Point {
 
 // 为Point结构体实现方法
 impl Point {
-
     // 定义一个公共的构造函数new，接收一个usize类型的参数i
     pub fn new(i: usize) -> Self {
         // 创建一个新的RTree实例

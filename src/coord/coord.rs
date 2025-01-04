@@ -230,4 +230,3 @@ mod tests {
         assert_eq!(closest_points.len(), 3);
     }
 }
-
