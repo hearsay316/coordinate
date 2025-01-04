@@ -1,0 +1,9 @@
+### Send POST request with json body
+POST http://127.0.0.1:3000/12?user=1&age=22&name=liuchu
+Content-Type: application/json
+User-Acc: 123
+
+{
+  "id": "999",
+  "value": "content"
+}
