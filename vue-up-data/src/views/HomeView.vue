@@ -7,14 +7,14 @@ async function handleChange(event) {
   //
   // [[fles[0],value],[fles[0],value]]
   for (let i = 0; i < files.length; i++) {
-    formData.append('files[]', files[i]);
+    formData.append('file', files[i]);
   }
   formData.append('text', "123");
   formData.append('json', {
     name: 'John',
   });
   try {
-    const response = await fetch('http://localhost:3303/app/api/users/12?ggg=hhh&hhh=123', {
+    const response = await fetch('http://localhost:3004/upload?ggg=hhh&hhh=123', {
       method: 'POST',
       body: formData,
     });
