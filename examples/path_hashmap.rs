@@ -23,7 +23,7 @@ async fn users_get(
     "这个是一个请求".to_string()
 }
 //serde::json serde_json 给他传的是什么 引用  // 不要要实例  引用切片&str  &bytes
-async fn accept_form(headers: HeaderMap,mut multipart: Multipart) -> Response {
+async fn accept_form(headers: HeaderMap, mut multipart: Multipart) -> Response {
     println!("{:?}", headers);
     while let Some(field) = multipart.next_field().await.unwrap() {
         let name = field.name().unwrap().to_string();
@@ -60,4 +60,3 @@ async fn main() {
     let tcp = TcpListener::bind("0.0.0.0:3303").await.unwrap();
     axum::serve(tcp, app).await.unwrap();
 }
-

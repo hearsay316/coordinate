@@ -8,6 +8,5 @@ fn main() {
         name: String::from("hello"),
     };
     let key = "id";
-   key.split("").collect::<Vec<_>>();
-
+    key.split("").collect::<Vec<_>>();
 }
