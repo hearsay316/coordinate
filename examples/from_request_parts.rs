@@ -16,10 +16,10 @@ where
 {
     type Rejection = (StatusCode, &'static str);
     async fn from_request_parts(parts: &mut Parts, _state: &S) -> Result<Self, Self::Rejection> {
-        if let Some(user_ageent) = parts.headers.get(USER_AGENT) {
-            Ok(ExtractUserAgent(user_ageent.clone()))
+        if let Some(user_agent) = parts.headers.get(USER_AGENT) {
+            Ok(ExtractUserAgent(user_agent.clone()))
         } else {
-            Err((StatusCode::BAD_REQUEST, "no user ageent"))
+            Err((StatusCode::BAD_REQUEST, "no user agent"))
         }
     }
 }
