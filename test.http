@@ -15,3 +15,9 @@ User-aaa: 123
 }
 
 ###
+
+
+### GET request to example server
+GET http://127.0.0.1:3000/?generated-in=CLion
+Content-Type: application/json
+authorization: 11223
