@@ -37,7 +37,7 @@ where
 /// 它将打印 `USER_AGENT` 和查询参数，并返回一个包含状态码和响应体的 `Response`。
 async fn handler(
     ExtractUserAgent(user_agent): ExtractUserAgent, // 提取 ExtractUserAgent
-    Query(query): Query<HashMap<String, String>>, // 提取查询参数
+    Query(query): Query<HashMap<String, String>>,   // 提取查询参数
 ) -> Response {
     println!("{:?}", user_agent); // 打印 USER_AGENT
     println!("{:?}", query); // 打印查询参数
